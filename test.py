@@ -40,42 +40,34 @@ class labTests(unittest.TestCase):
 
     def test_res3(self):
         x = main.calc('167.128.92.70', '167.128.92.17', '167.128.92.68', '152.139.27.80')
-        print(x)
         self.assertTrue(x == '192.0.0.0   128.0.0.0')
 
     def test_alg1(self):
         x = main.calc('122.22.22.2', '122.22.22.2')
-        print(x)
         self.assertTrue(x == '255.255.255.255   122.22.22.2')
 
     def test_alg2(self):
         x = main.calc('0.0.0.0', '0.0.0.0')
-        print(x)
         self.assertTrue(x == '255.255.255.255   0.0.0.0')
 
     def test_alg3(self):
         x = main.calc('255.255.255.255', '255.255.255.255')
-        print(x)
         self.assertTrue(x == '255.255.255.255   255.255.255.255')
 
     def test_alg4(self):
         x = main.calc('255.255.255.255', '0.0.0.0')
-        print(x)
         self.assertTrue(x == '0.0.0.0   0.0.0.0')
 
     def test_alg5(self):
         x = main.calc('1.2.3.4', '128.5.7.8')
-        print(x)
         self.assertTrue(x == '0.0.0.0   0.0.0.0')
 
     def test_alg6(self):
         x = main.calc('255.255.255.255', '255.255.255.255', '255.255.255.255', '255.255.255.255', '255.255.255.255', '0.0.0.0')
-        print(x)
         self.assertTrue(x == '0.0.0.0   0.0.0.0')
 
     def test_alg7(self):
         x = main.calc('255.255.255.255', '255.255.255.0')
-        print(x)
         self.assertTrue(x == '255.255.255.0   255.255.255.0')
 
 

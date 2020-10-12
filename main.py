@@ -2,7 +2,7 @@ import argparse
 import sys
 
 
-def calc(*ip):
+def calc(*ip):  #вычисляем маски и берем лучший вариант
     if len(ip) < 2:
         raise TypeError(" Need more ip ")
     ip1 = parse(ip[0])
@@ -13,12 +13,11 @@ def calc(*ip):
         cur_mask = get_mask(ip1, ip2)
         if cur_mask < best_mask:
             best_mask = cur_mask.copy()
-            best_mask = get_mask(ip1, ip2)
     res = '.'.join(map(str, best_mask)) + '   ' + '.'.join(map(str, get_net(ip1, best_mask)))
     return res
 
 
-def parse(_str):    #бьем каждый ip на 4 элемента
+def parse(_str):    #бьём каждый ip на 4 элемента
     buf = _str.split('.')
     buf = [int(x) for x in buf]
     for i in buf:
@@ -41,7 +40,7 @@ def get_mask(_ip1, _ip2):    #ищет маску подсети для двух
             else:
                 for j in range(2, len(string)):
                     if string[j] == '0':
-                        string = string[:j]+string[j:].replace('1', '0')    #обрезаем после первого нуля
+                        string = string[:j]+string[j:].replace('1', '0')    #обрезаем маску после первого нуля
                         break
                 mask[i] = int(string, 2)
             break
